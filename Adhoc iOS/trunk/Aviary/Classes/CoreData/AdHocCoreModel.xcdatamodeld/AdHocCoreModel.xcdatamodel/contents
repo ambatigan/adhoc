@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="createddate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createduserid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdusername" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isuserhasliked" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberofcomments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberoflikes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photourl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileimage" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="photo" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="tags" inverseEntity="Photo" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hometown" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberoflikes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberofpost" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilephoto" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="useid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userrank" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="userTags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserTag" inverseName="user" inverseEntity="UserTag" syncable="YES"/>
+    </entity>
+    <entity name="UserTag" representedClassName="UserTag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userTags" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Photo" positionX="9" positionY="54" width="128" height="208"/>
+        <element name="Tag" positionX="250" positionY="204" width="128" height="88"/>
+        <element name="User" positionX="18" positionY="293" width="128" height="193"/>
+        <element name="UserTag" positionX="304" positionY="452" width="128" height="88"/>
+    </elements>
+</model>

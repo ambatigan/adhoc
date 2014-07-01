@@ -1,0 +1,25 @@
+//
+// Prefix header for all source files of the 'Aviary' target in the 'Aviary' project
+//
+
+#import <Availability.h>
+#import "TestFlight.h"
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "MBProgressHUD.h"
+    #import "Constant.h"
+    #import "AFPhotoEditorController.h"
+    #import "AppDelegate.h"
+    #import "Reachability.h"
+    #import "URLConnection.h"
+    #import "JSON.h"
+
+#endif
+
+#define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)

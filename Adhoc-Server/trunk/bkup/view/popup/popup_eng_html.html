@@ -1,0 +1,84 @@
+<html>
+<head>  
+<style> 
+@font-face {
+     font-family: 'SketchFlowPrint';
+     src: url('../font/SketchFlow Print');
+     font-weight: normal;
+     font-style: normal;
+}
+
+#link a{
+    background: url("../../images/popup_link2.png") no-repeat scroll center center transparent;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    height: 24px;
+    padding-top: 4px;
+}
+</style>     
+<script language="javascript" src="jquery.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script language="javascript" >
+    
+$(document).ready(function(){ 
+$.ajax({
+   url: "popup_eng.php",
+   type: 'POST',
+   success: function(data){
+     responseobj = $.parseJSON(data);
+     
+     //alert(responseobj);
+     //console.log(responseobj);
+    
+     if(responseobj[0]==''||responseobj[0]=='&nbsp;'||responseobj[0]=='<br />')
+        document.getElementById('popup_desc').style.display = 'none';
+     else
+        $("#popup_desc").html('<p>'+responseobj[0]+'</p>');
+    
+     if(responseobj[1]=='')
+        document.getElementById('popup_image').style.display = 'none';
+     else    
+        $("#popup_image_div").html('<img src="http://192.168.10.2/Rating/uploads/popup_images/'+responseobj[1]+'" alt="" style="text-align:center; margin-bottom:10px; width: 260px;" />');
+    
+    if(responseobj[2]=='')
+        document.getElementById('link').style.display = 'none';
+    else if(responseobj[2]=='external')
+        $("#link").html('<p><a style="color: #fff; text-align: center;" href="external://linkIntercept">'+responseobj[4]+'</a></p>');
+    else
+        $("#link").html('<p><a style="color: #fff; text-align: center;" href="esalemjarib://linkIntercept">'+responseobj[4]+'</a></p>');
+    
+    if(responseobj[7]=='')
+        document.getElementById('logo').style.display = 'none';
+    else
+        $("#logo").html('<a href="esalemjarib://linkIntercept"><img src="'+responseobj[7]+'" alt="" style="height:50px; width:50px;"/></a>');
+    
+   }
+ });
+ });
+ 
+</script>    
+
+</head>
+
+<body>
+    <div style="width:280px;">
+        
+        <div id="popup_image" style="text-align:center; width:260px; height:auto; font-size:11px;">
+            <div id="popup_image_div" style="text-align:center;">
+            </div>
+        </div>
+
+        <div id="popup_desc" style="font-family: 'SketchFlowPrint'; text-align:justify !important; width:280px; height:auto; color:#404041; font-size:18px !important; word-wrap: break-word;">
+        </div> 
+
+        <div id="logo" style="float:left; width:50%; width:70px; height:auto; display: none;">
+        </div>
+
+        <div id="link" style="font-family: 'SketchFlowPrint'; width:100%; display: inline; color:#fff; height:auto; text-align: center;">
+        </div>
+    
+    </div>
+            
+</body>    
+</html>
